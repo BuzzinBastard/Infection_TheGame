@@ -45,15 +45,22 @@ class microbe:
 	def __init__(self, atp, type, gram, motile, weapon):
 		self.atp = atp
 		self.type = type
+		self.species = species
 		self.gram = gram
 		self.motile = motile
 		self.weapon = weapon
+		self.quorum = quorum
+		self.chemotaxis = chemotaxis
 
 	atp = 25
 	type = "Bacteria"
+	species = ["Bacillus, Streptococcus"]
 	gram = ["Positive", "Negative"]
 	motile = False
 	weapon = ["Exotoxin - Antibiotic", "Endotoxin"]
+	quorum = False
+	chemotaxis = False
+
 
 class cell:
 	def __init__(self, atp, type, weapon, location):
