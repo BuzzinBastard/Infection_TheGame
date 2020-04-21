@@ -4,7 +4,9 @@
 player_Type = ""
 player_Name = ""
 player_Input = ""
+intro_Run = 1
 game_Run = 1
+
 
 
 # Welcome
@@ -29,6 +31,11 @@ print("                    |   ")
 print("                    |   ")
 print("            Last Common Ancestor ")
 
+# Character Setup
+while(intro_Run > 0):
+	print("You awaken to find yourself freshly, wide-eyed daughter cell. Welcome to the world.")
+ 	print("")
+
 
 while(game_Run > 0):
 	if(player_Input == "Exit" or player_Input == "exit" or player_Input == "Quit" or player_Input == "q" or player_Input = "Q"):
@@ -42,7 +49,7 @@ while(game_Run > 0):
 		print ( "Welcome Defender! Prepare the defenses.")
 
 class microbe:
-	def __init__(self, atp, type, gram, motile, weapon):
+	def __init__(self, atp, type, gram, motile, weapon, quorum, chemotaxis, evasion, location, special):
 		self.atp = atp
 		self.type = type
 		self.species = species
@@ -51,6 +58,9 @@ class microbe:
 		self.weapon = weapon
 		self.quorum = quorum
 		self.chemotaxis = chemotaxis
+		self.evasion = evasion
+		self.location = location
+		self.special = special
 
 	atp = 25
 	type = "Bacteria"
@@ -60,6 +70,9 @@ class microbe:
 	weapon = ["Exotoxin - Antibiotic", "Endotoxin"]
 	quorum = False
 	chemotaxis = False
+	evasion = "Pump, Enzyme"
+	location = ""
+	special = ""
 
 
 class cell:
