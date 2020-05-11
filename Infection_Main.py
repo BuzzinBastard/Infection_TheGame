@@ -33,6 +33,7 @@ print("You awaken to find yourself freshly, wide-eyed daughter cell. Welcome to 
 print("")
 print(" The next step is to get organized and figure out where you fit in and find your niche!")
 
+# User input will help create user microbe class. How to ensure user gives "useful" choices.
 type = "Bacteria"
 species = input("Please choose your species type: ")
 gram = input("Are you a gram negative or gram positive? ")
@@ -44,10 +45,13 @@ defense = input("What is your main defense mechanism? ")
 location = input("What is your starting location? ")
 special = input("What is your secret special ability? ")
 
-user = Microbe(25, type, species, gram, motile, weapon, quorum, chemotaxis, defense, location, special)
+# Create class with input variables.
+user = Microbe(25, type, species, gram, motile, weapon, quorum, chemotaxis, defense, location, special, 1)
 
+# The user class with variables. Need to make list variables so adding more genes (at cost of more nrg).
+# Ex. Weapons, what happens if a new weapon is evolved, developed or genes found?
 class Microbe:
-	def __init__(self, atp, type, gram, motile, weapon, quorum, chemotaxis, defense, location, special):
+	def __init__(self, atp, type, gram, motile, weapon, quorum, chemotaxis, defense, location, special, population):
 		self.atp = atp
 		self.type = type
 		self.species = species
@@ -59,6 +63,7 @@ class Microbe:
 		self.defense = defense
 		self.location = location
 		self.special = special
+		self.population = population
 
 	atp = 25
 	type = "Bacteria"
@@ -71,24 +76,16 @@ class Microbe:
 	defense = "Pump, Enzyme"
 	location = ""
 	special = ""
+	population = 1
 
+# Methods involved in the player derived microbe class
 
-class cell:
-	def __init__(self, atp, type, weapon, location):
-		self.atp = atp
-		self.type = type
-		self.weapon = weapon
-		self.location = location
-
-	atp = 50
-	type = ["Macrophage", "Neutrophil", "Eosinophil", "T Cell", "B Cell"]
-	weapon = ["Ingestion", "Antibody", "MAC Attack", "Web"]
-	location = ["Organ", "Blood"]
-	
+# Changing ATP
 def metabolism(atp, mod):
 	total = atp + mod
 	return total
 
+# Print the current characteristics
 def descibe(c):
 	print("OooOooO")
 	print("ATP amount: " + c.atp)
@@ -103,6 +100,22 @@ def descibe(c):
 	print("What is your current location? " + c.location)
 	print("What is your special ability? " + c.special)
 
+# NPC cell class to give enemies.
+class cell:
+	def __init__(self, atp, type, weapon, location, popluation):
+		self.atp = atp
+		self.type = type
+		self.weapon = weapon
+		self.location = location
+		self.population = population
+
+	atp = 50
+	type = ["Macrophage", "Neutrophil", "Eosinophil", "T Cell", "B Cell"]
+	weapon = ["Ingestion", "Antibody", "MAC Attack", "Web"]
+	location = ["Organ", "Blood"]
+	population = 1
+	
+
 # Make sure you know your checks to ensure game keeps going.
 # Player has not types "q" or "quit"
 # Player still has ATP to spend, maybe give a warning if "next turn" or "next check" ATP drops to zero or below.
@@ -111,6 +124,7 @@ def descibe(c):
 # Like a real cell, very strict control systems, only use this UNDER THESE CIRCUMSTANCES
 # Do not leave things "running" in the background.
 # What currently requires ATP? Staying alive, motility, weapon, activating quorum sensing "ultimate"
+
 while True:
 	if(atp < 0):
 		break
